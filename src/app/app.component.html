@@ -2,7 +2,7 @@
   <h1 class="text-center">Select shipping method</h1>
   <div class="d-flex justify-content-center">
     <div *ngFor="let option of shippingOptions"
-      ngClass="{ border-info: option == selectedOption }"
+      [ngClass]="{ 'border-info': option == selectedOption }"
       class="text-center m-5 p-5 border">
       <h3 class="card-title text-capitalize">{{ option }}
       </h3>
