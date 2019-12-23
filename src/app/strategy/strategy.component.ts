@@ -1,47 +1,27 @@
 import * as moment from 'moment';
 import { Component } from '@angular/core';
 
-@Component({
-  selector: 'app-strategy',
-  templateUrl: './strategy.component.html',
-})
-export class StrategyComponent {
-  title = 'Strategy';
-  shippingOptions = ['express', 'standard'];
-  selectedOption = null;
-  estimatedDelivery = null;
-
-  /////////////////////////////
-  ////////// BEFORE ///////////
-  /////////////////////////////
-
-  // clickOnShippingMethod(option) {
-  //   this.selectedOption = option;
-  //   const shipping = new Shipping(option);
-  //   this.estimatedDelivery = shipping.estimateDeliveryDate();
-  // }
-
-  /////////////////////////////
-  ////////// AFTER ///////////
-  /////////////////////////////
-
-  clickOnShippingMethod(option) {
-    this.selectedOption = option;
-    let strategy;
-    if (option == 'express') {
-      strategy = new ExpressShippingStrategy();
-    }
-    else if (option == 'standard') {
-      strategy = new StandardShippingStrategy();
-    }
-    const shipping = new Shipping(strategy);
-    this.estimatedDelivery = shipping.estimateDeliveryDate();
-  }
-}
-
 /////////////////////////////
 ////////// BEFORE ///////////
 /////////////////////////////
+
+// @Component({
+//   selector: 'app-strategy',
+//   templateUrl: './strategy.component.html',
+// })
+// export class StrategyComponent {
+//   title = 'Strategy';
+//   shippingOptions = ['express', 'standard'];
+//   selectedOption = null;
+//   estimatedDelivery = null;
+
+//   clickOnShippingMethod(option) {
+//     this.selectedOption = option;
+//     const shipping = new Shipping(option);
+//     this.estimatedDelivery = shipping.estimateDeliveryDate();
+//   }
+
+// }
 
 // class Shipping {
 //   constructor(public option) { }
@@ -60,6 +40,30 @@ export class StrategyComponent {
 /////////////////////////////
 ////////// AFTER ///////////
 /////////////////////////////
+
+@Component({
+  selector: 'app-strategy',
+  templateUrl: './strategy.component.html',
+})
+export class StrategyComponent {
+  title = 'Strategy';
+  shippingOptions = ['express', 'standard'];
+  selectedOption = null;
+  estimatedDelivery = null;
+
+  clickOnShippingMethod(option) {
+    this.selectedOption = option;
+    let strategy;
+    if (option == 'express') {
+      strategy = new ExpressShippingStrategy();
+    }
+    else if (option == 'standard') {
+      strategy = new StandardShippingStrategy();
+    }
+    const shipping = new Shipping(strategy);
+    this.estimatedDelivery = shipping.estimateDeliveryDate();
+  }
+}
 
 interface ShippingStrategy {
   estimateDeliveryDate(): string;
