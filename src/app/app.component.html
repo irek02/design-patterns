@@ -1,12 +1,3 @@
-<div class="container mt-3">
-  <h1 class="text-center">Select shipping method</h1>
-  <div class="d-flex justify-content-center">
-    <div *ngFor="let option of shippingOptions" [ngClass]="{ 'border-info': option == selectedOption }" class="text-center m-5 p-5 border">
-      <h3 class="card-title text-capitalize">{{ option }}</h3>
-      <button class="btn btn-primary" (click)="clickOnShippingMethod(option)">Select</button>
-    </div>
-  </div>
-  <h2 *ngIf="estimatedDelivery" class="text-info text-center mt-5">
-    Estimated delivery: {{ estimatedDelivery }}
-  </h2>
-</div>
+<div class="container mt-3"></div>
+
+<router-outlet></router-outlet>
